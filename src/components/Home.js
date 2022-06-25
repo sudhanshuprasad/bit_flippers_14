@@ -7,7 +7,7 @@ function Home() {
 
     const [clothItem, setClothItem] = useState([]);
 
-    console.log(process.env.HOST)
+    console.log(process.env.NODE_ENV)
     useEffect(() => {
         getCloth();
 
