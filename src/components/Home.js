@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from "./Card"
+import './style/Home.css'
 
 const host="http://127.0.0.1:5000"
 
@@ -7,7 +8,7 @@ function Home() {
 
     const [clothItem, setClothItem] = useState([]);
 
-    console.log(process.env.NODE_ENV)
+    console.log(process.env.REACT_APP_HOST)
     useEffect(() => {
         getCloth();
 
