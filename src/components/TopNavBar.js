@@ -3,18 +3,18 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TopNavBar = () => {
 
     const [login, SetLogin] = useState([Boolean(localStorage.getItem('authToken'))]);
+    // let navigate=useNavigate();
     const handleLogout = () => {
         SetLogin(false)
         localStorage.removeItem("authToken");
+        // navigate('/');
     }
 
-
-    //check if user has already logged in
     useEffect(() => {
         if (Boolean(localStorage.getItem('authToken'))) {
             SetLogin(true);
@@ -28,17 +28,17 @@ const TopNavBar = () => {
         <div>
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand href="#">Handlooms.com</Navbar.Brand>
+                    <Navbar.Brand>Handlooms.com</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
-                        
+
                         <Nav
                             className="me-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
                             <Nav.Item>
-                                Home
+                                <Link to="/home" >Home</Link>
                             </Nav.Item>
                         </Nav>
 
@@ -48,14 +48,17 @@ const TopNavBar = () => {
                             </Nav.Item>
                         </Nav>
 
-                        <NavDropdown className="d-flex mx-5" title="Profile" id="nav-dropdown">
-                            <NavDropdown.Item eventKey="4.1">Go</NavDropdown.Item>
-                            <NavDropdown.Item eventKey="4.2">to</NavDropdown.Item>
-                            <NavDropdown.Item eventKey="4.3">hell</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item eventKey="4.4" onClick={handleLogout}>Logout</NavDropdown.Item>
-                        </NavDropdown>
-                    
+                        {
+                            login ?
+                                <NavDropdown className="d-flex mx-5" title="Profile" id="nav-dropdown">
+                                    <NavDropdown.Item eventKey="4.4" onClick={handleLogout}>Logout</NavDropdown.Item>
+                                </NavDropdown>
+                                :
+                                <div onClick={() => {
+                                    SetLogin(true)
+                                }}><Link className="mx-5" to="/login"><p className="mx-5" id='login'>Login</p></Link></div>
+                        }
+
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

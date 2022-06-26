@@ -1,12 +1,12 @@
 const http=require('http');
+const connectToMongo = require('./db');
 const dotenv=require('dotenv').config();
-const connectToMongoose=require('./db')
 
-connectToMongoose();
+connectToMongo();
 
-const express=require('express');
-const app=express;
-const port= process.env.PORT||5001
+const express = require('express')
+const app = express();
+const port = process.env.PORT||5000
 
 const cors = require('cors');
 const res = require('express/lib/response');
@@ -22,12 +22,16 @@ app.use(
 
 app.use(express.json());
 
-const server=http.createServer((req,res)=>{
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('Hello World');
-})
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  res.end('check');
+});
 
-app.listen(port,()=>{
-    console.log("The backend listening at port "+port);
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/cart', require('./routes/cart'));
+app.use('/api/clothitem', require('./routes/clothItem'));
+
+app.listen(port,() => {
+  console.log(`backend listening on port ${port}`)
 })

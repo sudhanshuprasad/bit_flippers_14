@@ -16,7 +16,7 @@ function Home() {
 
 
     const getCloth=()=>{
-        let url = `${host}/api/fooditem/getFood`;
+        let url = `${host}/api/clothitem/getCloth`;
 
       fetch(url)
       .then(response => {
