@@ -38,7 +38,7 @@ const TopNavBar = () => {
                             navbarScroll
                         >
                             <Nav.Item>
-                                <Link to="/home" >Home</Link>
+                                <Link to="/home" ><img src="https://img.icons8.com/ios-filled/30/000000/home.png" alt='home' /></Link>
                             </Nav.Item>
                         </Nav>
 

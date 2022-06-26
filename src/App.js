@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import MyOrder from './components/MyOrder';
 import TopNavBar from './components/TopNavBar';
+import ProductPage from './components/ProductPage';
 
 function App() {
   return (
@@ -12,11 +13,12 @@ function App() {
       <BrowserRouter>
       <TopNavBar />
         <Routes>
-          <Route path='home' element={<Home/>} />
-          <Route path='cart' element={<Cart/>} />
-          <Route path='myorder' element={<MyOrder/>} />
-          <Route path='login' element={<Login/>} />
-          <Route path='signup' element={<Signup/>} />
+          <Route path='/home' element={<Home/>} />
+          <Route path='/cart' element={<Cart/>} />
+          <Route path='/myorder' element={<MyOrder/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/signup' element={<Signup/>} />
+          <Route path='/product/:id' element={<ProductPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

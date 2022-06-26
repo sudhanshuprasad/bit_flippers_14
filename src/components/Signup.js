@@ -33,7 +33,7 @@ export default function Signup() {
         })
         .then(data => {
 
-          if (data.error[0].msg !== undefined) {
+          if (data?.error[0].msg !== undefined) {
             console.log(data.error[0].msg);
             setError(data.error[0].msg);
           } else if (data.error) {

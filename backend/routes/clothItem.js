@@ -21,7 +21,7 @@ router.get("/getCloth", async (req, res) => {
 });
 
 //Route:2
-//Get cart details using: GET: "/api/fooditem/getFood/:id". Login is not required
+//Get cart details using: GET: "/api/fooditem/getCloth/:id". Login is not required
 router.get("/getCloth/:id", async (req, res) => {
     try {
         const fooditem = await Cloth.findById(req.params.id);

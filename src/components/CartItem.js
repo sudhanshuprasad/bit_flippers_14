@@ -65,12 +65,13 @@ export default function CartItem(props) {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        const url = `${host}/api/fooditem/getFood/${props.id}`
+        const url = `${host}/api/clothitem/getCloth/${props.id}`
         fetch(url)
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
+        .then(response => {
+            // console.log(response.json());
+            return response.json()
+        })
+        .then(data => {
                 // console.log(data);
                 setItem(data);
             });
@@ -80,7 +81,7 @@ export default function CartItem(props) {
     return (
         <div className="cartitem" id={"item" + item._id}>
             <div className="cartItem_image">
-                <img src="https://picsum.photos/30" alt="food" />
+                <img src="https://picsum.photos/30" alt="product" />
             </div>
             <div className="cartitem_content">
                 <div className="cartitem_name">

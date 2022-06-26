@@ -24,6 +24,7 @@ function Home() {
       })
       .then(data => {
         setClothItem(data);
+        // console.log(data)
       });
     }
 
@@ -34,7 +35,7 @@ function Home() {
                     <Card
                         key={element._id}
                         num={element._id}
-                        imgurl="https://picsum.photos/60"
+                        imgurl={element.imgurl||"https://picsum.photos/60"}
                         foodName={element.name}
                         price={element.price}
                         dsc={element.dsc}
